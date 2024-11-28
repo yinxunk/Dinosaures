@@ -1,0 +1,323 @@
+*{
+  --color-blue: blue;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 10px;
+    background-color: rgb(189, 189, 176);
+  }
+
+  .header  {
+    display: flex;
+    justify-content: center;
+    
+    
+  }
+  
+
+
+  .header #webimg{
+    
+    height: 60px;
+    padding: 20.15px;
+    
+    
+    
+  }
+  
+  .logo{
+    flex-shrink: 1;
+    width: 50px; /* Set the logo width */
+  height: 50px; /* Set the logo height */
+  background-image: url('brachiosaurus.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  }
+
+  .header {
+    height: 80px;
+    align-items: center;
+    
+    margin: auto;
+    width: 25%;
+  }
+  .header #maintitle{
+    flex-shrink: 0;
+    font-family:'Courier New', Courier, monospace ;
+    color: black;
+    text-shadow: 2px 2px 10px white;
+    text-align: center;
+    font-size: 40px;
+    padding: 0px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: visible; 
+    
+    
+  }
+  
+  .header #maintitle a{
+    flex-shrink: 0;
+    text-decoration: none;
+    color: black;
+    
+  }
+
+
+  .navigation {
+    width: 75%;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    /*border: 1px solid white;*/
+    
+    
+    
+  }
+
+  .navigatebar {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    /*border-color: white;*/
+
+
+    
+  }
+
+  .navigatebar {
+    list-style-type: none;
+    background-color: rgb(65, 65, 65);
+    border: 4px solid rgb(65, 65, 65);
+    height: 40px;
+    flex: 1 1 auto;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 2px;
+    justify-content:space-around;
+  }
+
+  .navigatebar  a{
+    /*border: 1px solid white;*/
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 20px;
+    text-align:center;
+    color: white;
+    text-decoration: none; 
+    text-shadow: 2px 2px 10px white;
+    line-height: 1.5;
+    letter-spacing: 0.4em;
+    padding: 10px;
+
+    
+    
+  }
+
+  li a:hover{
+    text-shadow: 2px 2px 10px rgb(65, 65, 65);
+  }
+
+  .navigatebar li{
+    margin: auto;
+    
+  }
+
+  .searchbar {
+    display: flex;
+
+  }
+  
+  .searchbar{
+    margin: auto;
+    margin-bottom: 10px;
+    width: 65%;
+    justify-content:space-around;
+    /*border: 1px solid white;*/
+    height: 40px;
+  }
+  
+  
+  
+  .searchbar #bar{
+    width: 100%;
+    height: auto;
+    border: 2px solid white;
+    border-radius: 20px;
+    
+    
+  }
+
+  .searchbar #bar:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  .searchbar #button{
+    border: 2px solid rgb(189, 189, 176);
+    border-radius: 300px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+  Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 200;
+    
+  }
+
+  .searchbar #button:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  .welcome_page {
+    display: flex;
+    height: 500px;
+    /*border: 1px solid white;*/
+    width: 80%;
+    margin: auto;
+    
+  }
+
+  .welcome_page .article{
+    /*border: 1px solid white;*/
+    overflow: hidden;
+    width: 80%;
+    border-radius: 20px;
+    background-color: rgb(150, 150, 150);
+  }
+
+  .welcome_page .article #thirdtitle{
+    text-align: center;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace ;
+  }
+
+  .welcome_page .article #text{
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace ;
+  }
+
+  .welcome_page .sidebar{
+    /*border: 1px solid aqua;*/
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    border-radius: 20px;
+    background-color:   rgb(163, 163, 146);
+    justify-content: center;
+    
+  }
+
+  .welcome_page .sidebar #fav{
+    flex: 1 1 0.5;
+    
+    text-align: center;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace ;
+
+  }
+
+  .welcome_page .sidebar .favdino{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    /*border: 1px solid black;*/
+    
+    
+
+  }
+
+  .subfavdino{
+    margin: auto;
+  }
+  .subfavdino h4 a{
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  
+  
+  
+  
+
+  
+  
+  
+
+
+
+  .welcome_page .empty{
+    width: 10px;
+    
+    
+  }
+  .bottompanel {
+      width: 100%;
+      height: 30px;
+      /*border: 1px solid black;*/
+      position: absolute;
+      top: 100%;
+  }
+
+  .bottompanel #footertext{
+      /*border: 1px solid white;*/
+      text-align: left;
+  }
+
+  .article a[href^="http"]::after{
+
+      content: "";
+      display: inline-block;
+      width: 0.8em;
+      height: 0.8em;
+      margin-left:0.25em;
+      background-size: 100%;
+      background-image: url("icons8-external-link-26.png");
+
+  }
+  
+  a {
+    cursor: pointer;
+  }
+
+  p a:hover{
+    text-decoration: none;
+    
+  }
+
+  p a:link{
+    color:antiquewhite;
+  }
+
+  p a:visited{
+    color:darkolivegreen;
+  }
+
+  p a:active{
+    color: brown;
+  }
+
+  footer {
+    margin-top: auto;
+  }
+
+
+  .highlight {
+    background-color: rgba(255, 255, 255, 0.315); 
+    transition: background-color 1s ease; 
+}
+
+  
+  
