@@ -33,49 +33,50 @@ const Dinonarybutton = document.querySelector("#Dinonary");
 
 
 async function getData(Name){
-    const url = `https://www.nhm.ac.uk/discover/dino-directory/${Name.toLowerCase()}.html`;
-    console.log("Fetching URL: ", `http://localhost:3000/scrape?url=${encodeURIComponent(url)}`);
-    const response = await fetch(`http://localhost:3000/scrape?url=${url}`);
-    const data = await response.json();
-    image = data;
+    try {
+        const url = `https://www.nhm.ac.uk/discover/dino-directory/${Name.toLowerCase()}.html`;
+        console.log("Fetching URL: ", `http://localhost:3000/scrape?url=${encodeURIComponent(url)}`);
+        const response = await fetch(`http://localhost:3000/scrape?url=${url}`);
+        const data = await response.json();
+        //image = data;
 
-    if(response.ok){
-        console.log(data);
-        const hehediv = document.querySelector("#hehediv");
-        hehediv.innerHTML = '';
-        const div1 = document.createElement("div");
-        const div2 = document.createElement('div');
-        div2.style.width = '400px';
-        div2.style.height = '400px';
-        const img = document.createElement('img');
-        img.style.borderRadius = "10px";
-        img.style.width = '40em';
-        img.setAttribute('src', `https://www.nhm.ac.uk/${data.link}`);
-        console.log(img.src);
-        const title = document.createElement('h1');
-        title.style.fontSize = '4em';
-        title.style.fontFamily = '\'Courier New\', Courier, monospace';
-        title.style.marginLeft = "0.5em";
-        title.textContent = data.realtitle;
+        if(response.ok){
+            console.log(data);
+            const hehediv = document.querySelector("#hehediv");
+            hehediv.innerHTML = '';
+            const div1 = document.createElement("div");
+            const div2 = document.createElement('div');
+            div2.style.width = '400px';
+            div2.style.height = '400px';
+            const img = document.createElement('img');
+            img.style.borderRadius = "10px";
+            img.style.width = '40em';
+            img.setAttribute('src', `https://www.nhm.ac.uk/${data.link}`);
+            console.log(img.src);
+            const title = document.createElement('h1');
+            title.style.fontSize = '4em';
+            title.style.fontFamily = '\'Courier New\', Courier, monospace';
+            title.style.marginLeft = "0.5em";
+            title.textContent = data.realtitle;
         
-        const details = document.createElement('ul');
-        details.style.listStyleType = 'none';
-        const type = document.createElement('li');
-        const length = document.createElement('li');
-        const diet = document.createElement('li');
-        const time = document.createElement('li');
-        const found = document.createElement('li');
-        const lists = [ 1,2, type, length, diet, time, found];
-        for(let i = 2; i < data.detailname.length - 3; i ++) {
-            console.log(lists[i]);
-            lists[i].textContent = `${data.detailname[i]} ${data.detailcontent[i]}`;
-            lists[i].style.fontSize = '2em';
-            lists[i].style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif`;
-            details.appendChild(lists[i]);
+            const details = document.createElement('ul');
+            details.style.listStyleType = 'none';
+            const type = document.createElement('li');
+            const length = document.createElement('li');
+            const diet = document.createElement('li');
+            const time = document.createElement('li');
+            const found = document.createElement('li');
+            const lists = [ 1,2, type, length, diet, time, found];
+            for(let i = 2; i < data.detailname.length - 3; i ++) {
+                console.log(lists[i]);
+                lists[i].textContent = `${data.detailname[i]} ${data.detailcontent[i]}`;
+                lists[i].style.fontSize = '2em';
+                lists[i].style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+                                                    Helvetica, Arial, "Lucida Grande", sans-serif`;
+                details.appendChild(lists[i]);
             
-        }
-        details.style.display = 'inline-block';
+            }
+            details.style.display = 'inline-block';
         // infodiv.style.display = 'inline';
         //const svg1 = document.createElement("svg");
         //const svg2 = document.createElement("svg");
@@ -97,69 +98,80 @@ async function getData(Name){
         // div2.appendChild(svg1);
         // div2.appendChild(svg2);
         // div1.appendChild(div2);
-        const div3 = document.createElement('div');
+            const div3 = document.createElement('div');
        
-        if(data.firstdescription) {
-            const p1 = document.createElement('p');
-            p1.textContent = data.firstdescription;
-            div3.appendChild(p1);
-            if(data.seconddescription) {
-                const p2 = document.createElement('p');
-                p2.textContent = data.seconddescription;
-                div3.appendChild(p2);
+            if(data.firstdescription) {
+                const p1 = document.createElement('p');
+                p1.textContent = data.firstdescription;
+                div3.appendChild(p1);
+                if(data.seconddescription) {
+                    const p2 = document.createElement('p');
+                    p2.textContent = data.seconddescription;
+                    div3.appendChild(p2);
+                }
             }
-        }
        
-        div1.appendChild(img);
-        div1.style.display = 'inline-block';
+            div1.appendChild(img);
+            div1.style.display = 'inline-block';
         
-        hehediv.appendChild(title);
-        hehediv.appendChild(div1);
-        hehediv.appendChild(details);
-        if(!div3.innerHTML === ''){
-            hehediv.appendChild(div3);
-        }
-        const taxonomydiv = document.createElement('div');
-        const taxonomy = document.createElement('h2');
-        taxonomy.textContent = 'Taxonomic details';
-        taxonomy.style.fontSize = '3em';
-        taxonomy.style.marginLeft = '0.5em';
-        taxonomy.style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif`;
-        taxonomydiv.appendChild(taxonomy);
-        const taxonomylist = document.createElement('ul');
-        taxonomylist.style.listStyleType = 'none';
-        const taxonomydet = document.createElement('li');
-        const namedby = document.createElement('li');
-        const typespecies = document.createElement('li');
-        const taxonomyname = data.detailname.slice(7, 10);
-        const taxonomydetails = data.detailcontent.slice(7,10);
-        const taxlist = [taxonomydet,namedby, typespecies];
-        for(const item of taxlist){
-            item.textContent = `${taxonomyname[taxlist.indexOf(item)]} ${taxonomydetails[taxlist.indexOf(item)]}`;
-            taxonomylist.appendChild(item);
-            item.style.fontSize = '2em';
-            item.style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
-  Helvetica, Arial, "Lucida Grande", sans-serif, italic`;
-        }
-        taxonomydiv.appendChild(taxonomylist);
-        hehediv.appendChild(taxonomydiv);
+            hehediv.appendChild(title);
+            hehediv.appendChild(div1);
+            hehediv.appendChild(details);
+            if(!div3.innerHTML === ''){
+                hehediv.appendChild(div3);
+            }
+            const taxonomydiv = document.createElement('div');
+            const taxonomy = document.createElement('h2');
+            taxonomy.textContent = 'Taxonomic details';
+            taxonomy.style.fontSize = '3em';
+            taxonomy.style.marginLeft = '0.5em';
+            taxonomy.style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+    Helvetica, Arial, "Lucida Grande", sans-serif`;
+            taxonomydiv.appendChild(taxonomy);
+            const taxonomylist = document.createElement('ul');
+            taxonomylist.style.listStyleType = 'none';
+            const taxonomydet = document.createElement('li');
+            const namedby = document.createElement('li');
+            const typespecies = document.createElement('li');
+            const taxonomyname = data.detailname.slice(7, 10);
+            const taxonomydetails = data.detailcontent.slice(7,10);
+            const taxlist = [taxonomydet,namedby, typespecies];
+            for(const item of taxlist){
+                item.textContent = `${taxonomyname[taxlist.indexOf(item)]} ${taxonomydetails[taxlist.indexOf(item)]}`;
+                taxonomylist.appendChild(item);
+                item.style.fontSize = '2em';
+                item.style.fontFamily = `"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+    Helvetica, Arial, "Lucida Grande", sans-serif, italic`;
+            }
+            taxonomydiv.appendChild(taxonomylist);
+            hehediv.appendChild(taxonomydiv);
 
 
 
-        
-    } else {
-        console.error(data.error);
+            
+        } 
+    }catch(error){
+        console.log(error);
     }
+    
 }
 
 // getData('Aardonyx');
 async function getList(){
-    const url = `https://www.nhm.ac.uk/discover/dino-directory/name/name-az-all/gallery.html`;
-    console.log("Fetching URL: ", `http://localhost:3000/getList?url=${encodeURIComponent(url)}`);
-    const response = await fetch(`http://localhost:3000/getList?url=${url}`);
-    const data = await response.json();
-    return data;
+    try{
+        const url = `https://www.nhm.ac.uk/discover/dino-directory/name/name-az-all/gallery.html`;
+        console.log("Fetching URL: ", `http://localhost:3000/getList?url=${encodeURIComponent(url)}`);
+        const response = await fetch(`http://localhost:3000/getList?url=${url}`);
+        if(!response.ok){
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    }catch (err){
+        console.log(err);
+    }
+    
+    
 }
 
 const names = getList();
